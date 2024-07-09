@@ -10,7 +10,7 @@ const AddBook = () => {
     const navigate=useNavigate()
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:3001/book/add',{name,author,imageUrl})
+        axios.post(`${window.location.origin}/book/add`,{name,author,imageUrl})
         .then(res=>{
             if(res.data.added){
                 navigate('/books')
