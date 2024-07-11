@@ -9,9 +9,10 @@ import { bookRouter } from "./routes/book.js";
 import { Book } from "./models/Book.js";
 import { Student } from "./models/Student.js";
 import { Admin } from "./models/Admin.js";
-
+import bodyParser from "body-parser";
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors({
 //     // origin:['http://localhost:5173'],
 //     origin:['https://book-store-client-murex.vercel.app/'],
