@@ -10,7 +10,7 @@ const AddBook = () => {
     const navigate=useNavigate()
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('https://book-store-api-weld.vercel.app/book/add',{name,author,imageUrl})
+        axios.post('http://localhost:3001/book/add',{name,author,imageUrl})
         .then(res=>{
             if(res.data.added){
                 navigate('/books')

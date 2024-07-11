@@ -1,18 +1,17 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import './db.js'
-import { AdminRouter } from './routes/auth.js'
-import { studentRouter } from './routes/student.js'
-import { bookRouter } from './routes/book.js'
-import { Book } from './models/Book.js'
-import { Student } from './models/Student.js'
-import { Admin } from './models/Admin.js'
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import "./db.js";
+import { AdminRouter } from "./routes/auth.js";
+import { studentRouter } from "./routes/student.js";
+import { bookRouter } from "./routes/book.js";
+import { Book } from "./models/Book.js";
+import { Student } from "./models/Student.js";
+import { Admin } from "./models/Admin.js";
 
-
-const app = express()
-app.use(express.json())
+const app = express();
+app.use(express.json());
 // app.use(cors({
 //     // origin:['http://localhost:5173'],
 //     origin:['https://book-store-client-murex.vercel.app/'],
@@ -22,33 +21,39 @@ app.use(express.json())
 // }))
 
 const corsOptions = {
-    origin: ['https://book-store-client-murex.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}
-app.use(cors(corsOptions))
+  origin: ["https://book-store-client-murex.vercel.app","http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Handle preflight requests
-app.options('*', cors(corsOptions))
-app.use(cookieParser())
-dotenv.config()
-app.use('/auth',AdminRouter)
-app.use('/student',studentRouter)
-app.use('/book',bookRouter)
+app.options("*", cors(corsOptions));
+app.use(cookieParser());
+dotenv.config();
+app.get("/", (req, res, next) => {
+  res.status(200).json({
+    message: "hello",
+  });
+  next();
+});
 
-app.get('/dashboard',async(req,res)=>{
-    try{
-        const student= await Student.countDocuments()
-        const admin= await Admin.countDocuments()
-        const book= await Book.countDocuments()
-        return res.json({ok:true,student,book,admin})
-    }
-    catch(err){
-        return res.json(err)
-    }
-})
+app.use("/auth", AdminRouter);
+app.use("/student", studentRouter);
+app.use("/book", bookRouter);
 
-app.listen(process.env.PORT, ()=>{
-    console.log("server is running");
-})
+app.get("/dashboard", async (req, res) => {
+  try {
+    const student = await Student.countDocuments();
+    const admin = await Admin.countDocuments();
+    const book = await Book.countDocuments();
+    return res.json({ ok: true, student, book, admin });
+  } catch (err) {
+    return res.json(err);
+  }
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("server is running on port", process.env.PORT);
+});

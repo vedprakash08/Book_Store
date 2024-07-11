@@ -16,7 +16,7 @@ function App() {
 
   axios.defaults.withCredentials=true;
   useEffect(()=>{
-    axios.get('https://book-store-api-weld.vercel.app/auth/verify')
+    axios.get('http://localhost:3001/auth/verify')
     .then(res=>{
       if(res.data.login){
         setRole(res.data.role)
