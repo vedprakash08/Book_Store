@@ -28,7 +28,7 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Navbar role={role}/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
