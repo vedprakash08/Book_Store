@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
   origin: ["https://book-store-client-murex.vercel.app","http://localhost:5173",
-    "https://book-store-38cl.onrender.com"
+    "https://book-store-nine-eta.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
