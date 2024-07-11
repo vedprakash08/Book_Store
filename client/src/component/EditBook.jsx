@@ -12,7 +12,7 @@ const EditBook = () => {
 
 
     useEffect(()=>{
-        axios.get(`${window.location.origin}/book/book/`+id)
+        axios.get('http://localhost:3001/book/book/'+id)
         .then(res=>{
             setName(res.data.name)
             setAuthor(res.data.author)
