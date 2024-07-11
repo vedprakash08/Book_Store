@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, HashRouter,Routes, Route } from "react-router-dom"
 import Home from "./component/Home"
 import Navbar from "./component/Navbar"
 import Books from "./component/Books"
@@ -28,7 +28,7 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter basename="/">
+    <HashRouter>
       <Navbar role={role}/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -42,7 +42,7 @@ function App() {
         <Route path="/delete/:id" element={<DeleteBook />}></Route>
       </Routes>
 
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
