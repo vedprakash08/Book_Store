@@ -13,13 +13,24 @@ import { Admin } from './models/Admin.js'
 
 const app = express()
 app.use(express.json())
-app.use(cors({
-    // origin:['http://localhost:5173'],
-    origin:['https://book-store-client-murex.vercel.app/'],
+// app.use(cors({
+//     // origin:['http://localhost:5173'],
+//     origin:['https://book-store-client-murex.vercel.app/'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }))
+
+const corsOptions = {
+    origin: ['https://book-store-client-murex.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
-}))
+}
+app.use(cors(corsOptions))
+
+// Handle preflight requests
+app.options('*', cors(corsOptions))
 app.use(cookieParser())
 dotenv.config()
 app.use('/auth',AdminRouter)
