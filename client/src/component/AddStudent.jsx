@@ -11,7 +11,8 @@ const AddStudent = () => {
     const navigate=useNavigate()
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:3001/student/register',{roll,username,password,grade})
+        // axios.post('http://localhost:3001/student/register',{roll,username,password,grade})
+        axios.post('https://book-store-38cl.onrender.com/student/register',{roll,username,password,grade})
         .then(res=>{
             if(res.data.registered){
                 navigate('/dashboard')
