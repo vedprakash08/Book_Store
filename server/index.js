@@ -11,10 +11,10 @@ import { Student } from "./models/Student.js";
 import { Admin } from "./models/Admin.js";
 import bodyParser from "body-parser";
 import { AdminAccount } from "./seed.js";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors({
 //     // origin:['http://localhost:5173'],
@@ -25,8 +25,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // }))
 
 const corsOptions = {
-  origin: ["https://book-store-client-murex.vercel.app","http://localhost:5173",
-    "https://book-store-nine-eta.vercel.app"
+  origin: [
+    "https://book-store-client-murex.vercel.app",
+    "http://localhost:5173",
+    "https://book-store-nine-eta.vercel.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -42,15 +44,19 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Define the path to the client's dist directory
-const clientDistPath = path.join(__dirname, 'client/dist');
+const clientDistPath = path.join(__dirname, "client/dist");
 app.use(express.static(clientDistPath));
 //---------------
 app.get("/", (req, res, next) => {
   // res.status(200).json({
   //   message: "hello",
   // });
-  res.sendFile(path.join(clientDistPath, 'index.html'));
-  next();
+  try {
+    res.sendFile(path.join(clientDistPath, "index.html"));
+    next();
+  } catch (error) {
+    res.status(403).json(error);
+  }
 });
 
 app.use("/auth", AdminRouter);
