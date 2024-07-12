@@ -40,18 +40,13 @@ app.options("*", cors(corsOptions));
 app.use(cookieParser());
 dotenv.config();
 
-//---------------
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const clientDistPath = path.join(__dirname, "./dist");
-app.use(express.static(clientDistPath));
-//---------------
-// res.status(200).json({
-//   message: "hello",
-// });
-app.get("/", (req, res, next) => {
 
-  res.sendFile(path.resolve('dist','index.html'))
+//---------------
+
+app.get("/", (req, res, next) => {
+  res.status(200).json({
+    message: "hello",
+  });
 });
 
 app.use("/auth", AdminRouter);
