@@ -11,6 +11,8 @@ import { Student } from "./models/Student.js";
 import { Admin } from "./models/Admin.js";
 import bodyParser from "body-parser";
 import { AdminAccount } from "./seed.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 const app = express();
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,15 +33,23 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-
 // Handle preflight requests
 app.options("*", cors(corsOptions));
 app.use(cookieParser());
 dotenv.config();
+
+//---------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Define the path to the client's dist directory
+const clientDistPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDistPath));
+//---------------
 app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "hello",
-  });
+  // res.status(200).json({
+  //   message: "hello",
+  // });
+  res.sendFile(path.join(clientDistPath, 'index.html'));
   next();
 });
 
