@@ -51,6 +51,7 @@ app.get("/", (req, res, next) => {
   res.status(200).json({
     message: "hello",
   });
+  next();
 });
 
 app.use("/auth", AdminRouter);
