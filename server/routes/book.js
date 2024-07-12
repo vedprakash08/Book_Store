@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import { verifyAdmin } from "./auth.js";
 
 const router = express.Router();
-router.post('/add', async (req, res) => {
+router.post('/add',verifyAdmin, async (req, res) => {
     try {
         const { name, author, imageUrl } = req.body;
         const newbook = new Book({

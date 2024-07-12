@@ -20,8 +20,8 @@ router.post('/login', async(req,res)=>{
         }
 
         const token = jwt.sign({username:admin.username,role:'admin'},process.env.Admin_Key)
-        res.cookie('token',token,{httpOnly:true,secure:true})
-        return res.json({login:true,role:'admin'})
+        res.cookie('token',token).status(200).json({login:true,role:'admin'});
+        // return res.json()
     }
     else if(role==='student'){
         const student = await Student.findOne({username})
