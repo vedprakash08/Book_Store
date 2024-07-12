@@ -10,6 +10,7 @@ import { Book } from "./models/Book.js";
 import { Student } from "./models/Student.js";
 import { Admin } from "./models/Admin.js";
 import bodyParser from "body-parser";
+import { AdminAccount } from "./seed.js";
 const app = express();
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
