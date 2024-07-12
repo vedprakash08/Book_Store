@@ -48,10 +48,10 @@ const clientDistPath = path.join(__dirname, "./client/dist");
 app.use(express.static(clientDistPath));
 //---------------
 app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "hello",
-  });
-  next();
+  // res.status(200).json({
+  //   message: "hello",
+  // });
+  res.sendFile(path.resolve("index.html"));
 });
 
 app.use("/auth", AdminRouter);
