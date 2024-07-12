@@ -43,15 +43,15 @@ dotenv.config();
 //---------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// Define the path to the client's dist directory
 const clientDistPath = path.join(__dirname, "./client/dist");
 app.use(express.static(clientDistPath));
 //---------------
+// res.status(200).json({
+//   message: "hello",
+// });
 app.get("/", (req, res, next) => {
-  // res.status(200).json({
-  //   message: "hello",
-  // });
-  res.sendFile(path.resolve("./client/dist/index.html"));
+
+  res.sendFile('index.html', {root: path.join(__dirname, "/client/dist/")});
 });
 
 app.use("/auth", AdminRouter);
