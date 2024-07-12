@@ -51,7 +51,7 @@ app.get("/", (req, res, next) => {
   // res.status(200).json({
   //   message: "hello",
   // });
-  res.sendFile(path.resolve("index.html"));
+  res.sendFile(path.resolve("./client/dist/index.html"));
 });
 
 app.use("/auth", AdminRouter);
