@@ -47,6 +47,8 @@ router.post('/login', async(req,res)=>{
 
 const verifyAdmin=(req,res,next)=>{
     const token = req.cookies.token;
+    console.log(req.cookies)
+    console.log(req)
     if(!token){
         return res.json({message:"Invalid Admin"})
     }
