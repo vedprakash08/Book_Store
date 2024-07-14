@@ -42,11 +42,18 @@ dotenv.config();
 
 
 //---------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDistPath));
+//---------------
 
 app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "hello",
-  });
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+  next();
+  // res.status(200).json({
+    // message: "hello",
+  // });
 });
 
 app.use("/auth", AdminRouter);
