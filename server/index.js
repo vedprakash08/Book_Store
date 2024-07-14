@@ -49,11 +49,11 @@ app.use(express.static('./dist'));
 //---------------
 
 app.get("/", (req, res, next) => {
-  // res.sendFile(path.join(clientDistPath, 'index.html'));
-  // next();
-  res.status(200).json({
-    message: "hello",
-  });
+  res.sendFile('./index.html');
+  next();
+  // res.status(200).json({
+  //   message: "hello",
+  // });
 });
 
 app.use("/auth", AdminRouter);
