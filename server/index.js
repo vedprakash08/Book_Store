@@ -42,17 +42,17 @@ dotenv.config();
 
 
 //---------------
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-// const clientDistPath = path.join(__dirname, );
-app.use(express.static('./dist'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.join(__dirname, "./dist");
+app.use(express.static(clientDistPath));
 //---------------
 
 app.get("/", (req, res, next) => {
-  res.sendFile('index.html');
-  next();
+  res.sendFile(path.join(clientDistPath,"iindex.html"));
   // res.status(200).json({
   //   message: "hello",
+  //   p : clientDistPath
   // });
 });
 
