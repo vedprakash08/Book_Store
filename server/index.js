@@ -26,7 +26,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
   origin: [
-    "*",
+
+    "http://localhost:3001",
+    "https://book-store-we4z.vercel.app",
+    
     "https://book-store-client-murex.vercel.app",
     "http://localhost:5173",
     "https://book-store-nine-eta.vercel.app",
