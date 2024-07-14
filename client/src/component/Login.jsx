@@ -12,7 +12,7 @@ const Login = ({setRoleVar}) => {
   axios.defaults.withCredentials=true;
   const handleSubmit=()=>{
     // axios.post('http://localhost:3001/auth/login',{username,password,role})
-    axios.post('https://book-store-38cl.onrender.com/auth/login',{username,password,role})
+    axios.post('https://book-store-we4z.vercel.app/auth/login',{username,password,role})
     .then(res=>{
       if(res.data.login && res.data.role==='admin'){
         setRoleVar('admin')

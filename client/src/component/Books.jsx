@@ -7,7 +7,7 @@ const Books = ({role}) => {
   const [books,setBooks] = useState([])
   useEffect(()=>{
     // axios.get('http://localhost:3001/book/books')
-    axios.get('https://book-store-38cl.onrender.com/book/books')
+    axios.get('https://book-store-we4z.vercel.app/book/books')
     .then(res=>{
       setBooks(res.data)
       console.log(res.data)

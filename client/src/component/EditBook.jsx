@@ -13,7 +13,7 @@ const EditBook = () => {
 
     useEffect(()=>{
         // axios.get('http://localhost:3001/book/book/'+id)
-        axios.get('https://book-store-38cl.onrender.com/book/book/'+id)
+        axios.get('https://book-store-we4z.vercel.app/book/book/'+id)
         .then(res=>{
             setName(res.data.name)
             setAuthor(res.data.author)
