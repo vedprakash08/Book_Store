@@ -48,7 +48,7 @@ dotenv.config();
 //---------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientDistPath = path.join(__dirname, "../client/dist");
+const clientDistPath = path.join(__dirname, "../client/distt");
 app.use(express.static(clientDistPath));
 //---------------
 
