@@ -33,6 +33,7 @@ const corsOptions = {
     "https://book-store-client-murex.vercel.app",
     "http://localhost:5173",
     "https://book-store-nine-eta.vercel.app",
+    "https://book-store-seven-pi.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
