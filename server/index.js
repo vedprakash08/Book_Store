@@ -58,6 +58,7 @@ app.get("/", (req, res, next) => {
     message: "hello",
     f_name : __filename
   });
+  
 });
 
 app.use("/auth", AdminRouter);
