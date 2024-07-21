@@ -54,11 +54,11 @@ app.use(express.static(clientDistPath));
 //---------------
 
 app.get("/", (req, res, next) => {
-  // res.sendFile(path.join(clientDistPath,"index.html"));
-  res.status(200).json({
-    message: "hello",
-    f_name : __filename
-  });
+  res.sendFile(path.join(clientDistPath,"index.html"));
+  // res.status(200).json({
+  //   message: "hello",
+  //   f_name : __filename
+  // });
 
 });
 
