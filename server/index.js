@@ -48,15 +48,15 @@ dotenv.config();
 //---------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const clientDistPath = path.join(__dirname, "./dist");
+const clientDistPath = path.join(__dirname, "../client/dist");
 app.use(express.static(clientDistPath));
 //---------------
 
 app.get("/", (req, res, next) => {
   res.sendFile(path.join(clientDistPath,"index.html"));
   // res.status(200).json({
-  //   message: "hello",
-  //   p : clientDistPath
+    // message: "hello",
+    // f_name : __filename
   // });
 });
 
