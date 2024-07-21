@@ -20,8 +20,8 @@ router.post('/login', async(req,res)=>{
         }
 
         const token = jwt.sign({username:admin.username,role:'admin'},process.env.Admin_Key)
-        res.cookie('token',token,{httpOnly:true,secure:true})
-        return res.json({login:true,role:'admin'})
+        res.cookie('token',token).status(200).json({login:true,role:'admin'});
+        // return res.json()
     }
     else if(role==='student'){
         const student = await Student.findOne({username})
@@ -34,7 +34,7 @@ router.post('/login', async(req,res)=>{
         }
 
         const token = jwt.sign({username:student.username,role:'student'},process.env.Student_Key)
-        res.cookie('token',token,{httpOnly:true,secure:true})
+        res.cookie('token',token,{httpOnly:true,secure:true,sameSite:'none'})
         return res.json({login:true,role:'student'})
     }
     else{
@@ -48,6 +48,7 @@ router.post('/login', async(req,res)=>{
 const verifyAdmin=(req,res,next)=>{
     const token = req.cookies.token;
     if(!token){
+        console.log(token);
         return res.json({message:"Invalid Admin"})
     }
     else{

@@ -6,7 +6,8 @@ import '../CSS/Book.css'
 const Books = ({role}) => {
   const [books,setBooks] = useState([])
   useEffect(()=>{
-    axios.get('https://book-store-api-weld.vercel.app/book/books')
+    // axios.get('http://localhost:3001/book/books')
+    axios.get('https://book-store-we4z.vercel.app/book/books')
     .then(res=>{
       setBooks(res.data)
       console.log(res.data)

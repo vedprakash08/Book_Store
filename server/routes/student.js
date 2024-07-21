@@ -4,7 +4,8 @@ import bcrypt from 'bcrypt'
 import { verifyAdmin } from "./auth.js";
 
 const router = express.Router();
-router.post('/register',verifyAdmin, async (req, res) => {
+router.post('/register',verifyAdmin, async (req, res,next) => {
+    // console.log("ayi call");
     try {
         const { username, password, roll, grade } = req.body;
         const student = await Student.findOne({ username })
@@ -23,6 +24,9 @@ router.post('/register',verifyAdmin, async (req, res) => {
     } catch (err) {
         return res.json({ message: "Error in registring student" })
     }
+    // finally{
+    //     next();
+    // }
 })
 
 export { router as studentRouter }

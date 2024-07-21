@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, HashRouter,Routes, Route } from "react-router-dom"
 import Home from "./component/Home"
 import Navbar from "./component/Navbar"
 import Books from "./component/Books"
@@ -16,7 +16,8 @@ function App() {
 
   axios.defaults.withCredentials=true;
   useEffect(()=>{
-    axios.get('https://book-store-api-weld.vercel.app/auth/verify')
+    // axios.get('http://localhost:3001/auth/verify')
+    axios.get('https://book-store-we4z.vercel.app/auth/verify')
     .then(res=>{
       if(res.data.login){
         setRole(res.data.role)
@@ -28,7 +29,7 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar role={role}/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -42,7 +43,7 @@ function App() {
         <Route path="/delete/:id" element={<DeleteBook />}></Route>
       </Routes>
 
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
