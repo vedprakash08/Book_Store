@@ -9,8 +9,8 @@ const Navbar = ({role}) => {
             <Link to="/" className='navbar-brand'>Book Store</Link>
         </div>
         <div className="navbar-right">
-            <Link to="/books" className='navbar-link'>Books</Link>
             {role==='admin' && <>
+              <Link to="/books" className='navbar-link'>Books</Link>
               <Link to="/dashboard" className='navbar-link'>Dashboard</Link>
               <Link to="/addbook" className='navbar-link'>Add Book</Link>
               <Link to="/addstudent" className='navbar-link'>Add Student</Link>
